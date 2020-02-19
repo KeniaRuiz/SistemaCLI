@@ -59,10 +59,10 @@ public class SistemaCLI {
 
     public static void fibonacci() {
         boolean verif = false;
-        int limite=0;
-        int n1= 0;
-        int n2= 1;
-        
+        int limite = 0;
+        int n1 = 0;
+        int n2 = 1;
+
         while (!verif) {
             System.out.println("ALGORITMO DE FIBONACCI");
             System.out.print("Introduzca el número de términos para la serie de Fibonacci: ");
@@ -72,15 +72,15 @@ public class SistemaCLI {
                 limite = Integer.parseInt(limiteS);
             }
         }
-        
-        while(limite==0){
+
+        while (limite == 0) {
             System.out.println("No puede introducir el número 0, escoga otro número");
             System.out.println("Introduzca un número mayor que 1: ");
             limite = scan.nextInt();
         }
-        
+
         System.out.println("===== Resultado =====");
-        
+
         System.out.print(n1 + " ");
         for (int i = 2; i <= limite; i++) {
             System.out.print(n2 + " ");
@@ -93,6 +93,7 @@ public class SistemaCLI {
         boolean verif = false;
         int limite = 0;
         while (!verif) {
+            System.out.println("ALGORITMO DE PADOVAN");
             System.out.println("Introduce hasta que número deseas obtener la sucesión de Padovan");
             System.out.println("Fin: ");
             String limiteS = scan.nextLine();
@@ -122,6 +123,57 @@ public class SistemaCLI {
     }
 
     public static void trianguloPascal() {
+
+        boolean verif = false;
+        int limite = 0;
+        while (!verif) {
+            System.out.println("ALGORITMO DE TRIÁNGULO DE PASCAL");
+            System.out.println("Introduce hasta que número deseas obtener el triángulo de Pascal: ");
+            String limiteS = scan.nextLine();
+            if (comprobarOpcion(limiteS)) {
+                verif = true;
+                limite = Integer.parseInt(limiteS);
+            }
+        }
+
+        while (limite == 0) {
+            System.out.println("No puede introducir el número 0, escoga otro número");
+            System.out.println("Introduzca un número mayor que 1: ");
+            limite = scan.nextInt();
+        }
+
+        if (limite > 150) {
+            System.out.println("El limite de columnas es de 150");
+            System.out.println("Introduzca un número menor: ");
+            limite = scan.nextInt();
+
+        } else {
+
+            System.out.println("===== Resultado =====");
+            int[] aux = new int[1];
+
+            for (int i = 1; i <= limite; i++) {
+                int[] pascal = new int[i];
+
+                for (int k = limite; k > i; k--) {
+                    System.out.print(" ");
+                }
+
+                for (int j = 0; j < i; j++) {
+                    if (j == 0 || j == (i - 1)) {
+                        pascal[j] = 1;
+                    } else {
+                        pascal[j] = aux[j] + aux[j - 1];
+                    }
+                    System.out.print(pascal[j] + " ");
+                }
+
+                aux = pascal;
+                System.out.println();
+
+            }
+
+        }
 
     }
 
