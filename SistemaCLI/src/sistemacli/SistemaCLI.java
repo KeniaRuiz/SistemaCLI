@@ -58,7 +58,35 @@ public class SistemaCLI {
     }
 
     public static void fibonacci() {
-
+        boolean verif = false;
+        int limite=0;
+        int n1= 0;
+        int n2= 1;
+        
+        while (!verif) {
+            System.out.println("ALGORITMO DE FIBONACCI");
+            System.out.print("Introduzca el número de términos para la serie de Fibonacci: ");
+            String limiteS = scan.nextLine();
+            if (comprobarOpcion(limiteS)) {
+                verif = true;
+                limite = Integer.parseInt(limiteS);
+            }
+        }
+        
+        while(limite==0){
+            System.out.println("No puede introducir el número 0, escoga otro número");
+            System.out.println("Introduzca un número mayor que 1: ");
+            limite = scan.nextInt();
+        }
+        
+        System.out.println("===== Resultado =====");
+        
+        System.out.print(n1 + " ");
+        for (int i = 2; i <= limite; i++) {
+            System.out.print(n2 + " ");
+            n2 = n1 + n2;
+            n1 = n2 - n1;
+        }
     }
 
     public static void padovan() {
