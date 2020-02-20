@@ -15,7 +15,8 @@ public class SistemaCLI {
             System.out.println("Seleccione una opción para comenzar:"
                     + "\n1.- Fibonacci"
                     + "\n2.- Padovan"
-                    + "\n3.- Triángulo de Pascal");
+                    + "\n3.- Triángulo de Pascal"
+                    + "\n4.- Salir");
             option = scan.nextLine();
             switch (option) {
                 case "1":
