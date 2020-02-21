@@ -30,7 +30,7 @@ public class SistemaCLI {
                 case "3":
                     trianguloPascal();
                     break;
-                    
+
                 case "4":
                     System.exit(0);
                     break;
@@ -72,6 +72,7 @@ public class SistemaCLI {
 
         System.out.println("ALGORITMO DE FIBONACCI");
         while (!verif) {
+            System.out.println("***AVISO: El limite de entrada del sistema es de 2,147,483,647***");
             System.out.print("Introduzca el número limite para la serie de Fibonacci: ");
             String limiteS = scan.nextLine();
             if (comprobarOpcion(limiteS, 1)) {
@@ -89,12 +90,22 @@ public class SistemaCLI {
         System.out.print(a + ", ");
         System.out.print(b);
 
+        int contadorImpresion = 1;
         while (a + b <= limite) {
             c = a;
             a = b;
             b = c + a;
-
-            System.out.print(", " + b);
+            if (b < 0) {
+                break;
+            } else {
+                if (contadorImpresion > 10) {
+                    System.out.print("\n" + b);
+                    contadorImpresion = 1;
+                } else {
+                    System.out.print(", " + b);
+                    contadorImpresion++;
+                }
+            }
         }
 
     }
@@ -104,6 +115,7 @@ public class SistemaCLI {
         int limite = 0;
         while (!verif) {
             System.out.println("ALGORITMO DE PADOVAN");
+            System.out.println("***AVISO: El limite de entrada del sistema es de 2,147,483,647***");
             System.out.println("Introduce hasta que número deseas obtener la sucesión de Padovan");
             System.out.println("Fin: ");
             String limiteS = scan.nextLine();
@@ -116,7 +128,9 @@ public class SistemaCLI {
                 }
             }
         }
+        //1828587033
         System.out.println("===== Resultado =====");
+        int contadorImpresion = 1;
         if (limite < 1) {
             System.out.print("1");
         } else if (limite < 2) {
@@ -129,8 +143,17 @@ public class SistemaCLI {
                 a = b;
                 b = c;
                 c = d;
-                System.out.print(", " + d);
-
+                if (d < 0) {
+                    break;
+                } else {
+                    if (contadorImpresion > 10) {
+                        System.out.print("\n" + d);
+                        contadorImpresion = 1;
+                    } else {
+                        System.out.print(", " + d);
+                        contadorImpresion++;
+                    }
+                }
             }
         }
     }
@@ -157,7 +180,7 @@ public class SistemaCLI {
         long[] aux = new long[1];
 
         for (long i = 1; i <= limite; i++) {
-            long[] pascal = new long[(int)i];
+            long[] pascal = new long[(int) i];
 
             for (long k = limite; k > i; k--) {
                 System.out.print(" ");
@@ -165,11 +188,11 @@ public class SistemaCLI {
 
             for (long j = 0; j < i; j++) {
                 if (j == 0 || j == (i - 1)) {
-                    pascal[ (int) j] = 1;
+                    pascal[(int) j] = 1;
                 } else {
                     pascal[(int) j] = aux[(int) j] + aux[(int) j - 1];
                 }
-                System.out.print(pascal[(int)j] + " ");
+                System.out.print(pascal[(int) j] + " ");
             }
 
             aux = pascal;
@@ -188,7 +211,7 @@ public class SistemaCLI {
                 numE = Integer.parseInt(num);
                 esEntero = true;
             } catch (NumberFormatException e) {
-                System.out.println("Error!!! El valor debe ser númerico entero");
+                System.out.println("Error!!! El valor debe ser númerico entero. Es posible que tambien este insertando un valor mayor a 2,147,483,647");
                 esEntero = false;
             }
         } else {
@@ -196,7 +219,7 @@ public class SistemaCLI {
                 numEDos = Long.parseLong(num);
                 esEntero = true;
             } catch (NumberFormatException e) {
-                System.out.println("Error!!! El valor debe ser númerico entero");
+                System.out.println("Error!!! El valor debe ser númerico entero.");
                 esEntero = false;
             }
         }
